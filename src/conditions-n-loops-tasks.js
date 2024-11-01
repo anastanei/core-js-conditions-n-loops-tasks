@@ -21,8 +21,8 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  return number >= 0;
 }
 
 /**
@@ -38,8 +38,17 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  if (a > b) {
+    if (a > c) {
+      return a;
+    }
+    return c;
+  }
+  if (b > c) {
+    return b;
+  }
+  return c;
 }
 
 /**
@@ -82,8 +91,14 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a + b <= c || b + c <= a || a + c <= b) {
+    return false;
+  }
+  if (a === b || b === c || a === c) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -100,10 +115,57 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
-}
+function convertToRomanNumerals(num) {
+  let tens = '';
+  switch (Math.trunc(num / 10)) {
+    case 1:
+      tens = 'X';
+      break;
+    case 2:
+      tens = 'XX';
+      break;
+    case 3:
+      tens = 'XXX';
+      break;
+    default:
+      tens = '';
+  }
 
+  let ones = '';
+  switch (num % 10) {
+    case 1:
+      ones = 'I';
+      break;
+    case 2:
+      ones = 'II';
+      break;
+    case 3:
+      ones = 'III';
+      break;
+    case 4:
+      ones = 'IV';
+      break;
+    case 5:
+      ones = 'V';
+      break;
+    case 6:
+      ones = 'VI';
+      break;
+    case 7:
+      ones = 'VII';
+      break;
+    case 8:
+      ones = 'VIII';
+      break;
+    case 9:
+      ones = 'IX';
+      break;
+    default:
+      ones = '';
+  }
+
+  return `${tens}${ones}`;
+}
 /**
  * Converts a number to a string, replacing digits with words.
  * In this task, the use of methods of the String and Array classes is not allowed.
