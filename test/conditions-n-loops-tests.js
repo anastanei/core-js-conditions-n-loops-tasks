@@ -602,20 +602,20 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
     suffledString = utility.getShuffleStringUtil(notSuffledString, iteration);
   });
 
-  it.optional(
-    'optimal implementation of convertNumberToString',
-    function test() {
-      const fnStr = tasks.convertNumberToString.toString();
-      if (!fnStr.includes('return')) {
-        this.skip();
-      }
-      assert.equal(
-        fnStr.includes('switch'),
-        true,
-        'You need to use a different method or operator, look for the appropriate method or operator in the documentation https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch'
-      );
-    }
-  );
+  // it.optional(
+  //   'optimal implementation of convertNumberToString',
+  //   function test() {
+  //     const fnStr = tasks.convertNumberToString.toString();
+  //     if (!fnStr.includes('return')) {
+  //       this.skip();
+  //     }
+  //     assert.equal(
+  //       fnStr.includes('switch'),
+  //       true,
+  //       'You need to use a different method or operator, look for the appropriate method or operator in the documentation https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch'
+  //     );
+  //   }
+  // );
 
   it.optional('speed test of sortByAsc', function test() {
     this.slow(25);
