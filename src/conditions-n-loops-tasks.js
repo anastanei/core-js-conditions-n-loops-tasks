@@ -39,16 +39,10 @@ function isPositive(number) {
  *  -0.1, 0, 0.2  => 0.2
  */
 function getMaxNumber(a, b, c) {
-  if (a > b) {
-    if (a > c) {
-      return a;
-    }
-    return c;
+  if (a > b && a > c) {
+    return a;
   }
-  if (b > c) {
-    return b;
-  }
-  return c;
+  return b > c ? b : c;
 }
 
 /**
@@ -72,14 +66,11 @@ function getMaxNumber(a, b, c) {
 function canQueenCaptureKing(queen, king) {
   const { x: xQueen, y: yQueen } = queen;
   const { x: xKing, y: yKing } = king;
-  if (
+  return (
     xKing === xQueen ||
     yKing === yQueen ||
     Math.abs(yKing - yQueen) === Math.abs(xKing - xQueen)
-  ) {
-    return true;
-  }
-  return false;
+  );
 }
 
 /**
@@ -104,10 +95,7 @@ function isIsoscelesTriangle(a, b, c) {
   if (a + b <= c || b + c <= a || a + c <= b) {
     return false;
   }
-  if (a === b || b === c || a === c) {
-    return true;
-  }
-  return false;
+  return a === b || b === c || a === c;
 }
 
 /**
