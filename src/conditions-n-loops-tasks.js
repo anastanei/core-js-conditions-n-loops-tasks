@@ -491,9 +491,130 @@ function sortByAsc(arr, low = 0, high = arr.length - 1) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+
+function shuffleChar(str, iterations) {
+  let iterRem = iterations;
+  let resStr = str;
+  let even = '';
+  let odd = '';
+  const shuffledStrings = [];
+
+  while (iterRem > 0) {
+    for (let i = 1; i < str.length; i += 1) {
+      if (i % 2 === 0) {
+        even += resStr[i];
+      } else {
+        odd += resStr[i];
+      }
+    }
+    resStr = str[0] + even + odd;
+    shuffledStrings[shuffledStrings.length] = resStr;
+    if (resStr === str) {
+      const rem = iterations - iterRem;
+      return shuffledStrings[(iterations % rem) + 2];
+    }
+    even = '';
+    odd = '';
+    iterRem -= 1;
+  }
+
+  return resStr;
 }
+
+// function getShuffleIterations(str) {
+//   let tempStr = shuffleChar(str, 1);
+//   let n = 1;
+//   while (tempStr !== str) {
+//     tempStr = shuffleChar(tempStr, 1);
+//     n += 1;
+//   }
+//   return {
+//     length: str.length,
+//     iterations: n,
+//   };
+// }
+// function shuffleChar(str, iterations) {
+//   const n = str.length;
+
+//   const currentIndices = new Array(n);
+//   const srcIndices = [];
+//   for (let i = 0; i < n; i += 1) {
+//     currentIndices[i] = i;
+//     srcIndices[i] = i;
+//   }
+
+// { length: 1, iterations: 1 }
+// { length: 2, iterations: 1 }
+// { length: 3, iterations: 2 }
+// { length: 4, iterations: 2 }
+// { length: 5, iterations: 4 }
+// { length: 6, iterations: 4 }
+// { length: 7, iterations: 3 }
+// { length: 8, iterations: 3 }
+// { length: 9, iterations: 6 }
+// { length: 10, iterations: 6 }
+// { length: 11, iterations: 10 }
+// { length: 12, iterations: 10 }
+// { length: 13, iterations: 12 }
+// { length: 14, iterations: 12 }
+// { length: 15, iterations: 4 }
+// { length: 16, iterations: 4 }
+// { length: 17, iterations: 8 }
+// { length: 18, iterations: 8 }
+// { length: 19, iterations: 18 }
+// { length: 20, iterations: 18 }
+// { length: 21, iterations: 6 }
+// { length: 22, iterations: 6 }
+// { length: 23, iterations: 11 }
+// { length: 24, iterations: 11 }
+// { length: 25, iterations: 20 }
+// { length: 26, iterations: 20 }
+// { length: 27, iterations: 18 }
+// { length: 28, iterations: 18 }
+// { length: 29, iterations: 28 }
+// { length: 30, iterations: 28 }
+// { length: 31, iterations: 5 }
+// { length: 32, iterations: 5 }
+// { length: 33, iterations: 10 }
+// { length: 34, iterations: 10 }
+// { length: 35, iterations: 12 }
+// { length: 36, iterations: 12 }
+// { length: 37, iterations: 36 }
+// { length: 38, iterations: 36 }
+// { length: 39, iterations: 12 }
+// { length: 40, iterations: 12 }
+// { length: 41, iterations: 20 }
+// { length: 42, iterations: 20 }
+// { length: 43, iterations: 14 }
+// { length: 44, iterations: 14 }
+// { length: 45, iterations: 12 }
+// { length: 46, iterations: 12 }
+// { length: 47, iterations: 23 }
+// { length: 48, iterations: 23 }
+// { length: 49, iterations: 21 }
+// { length: 50, iterations: 21 }
+// { length: 51, iterations: 8 }
+// { length: 52, iterations: 8 }
+// { length: 53, iterations: 52 }
+// { length: 54, iterations: 52 }
+// { length: 55, iterations: 20 }
+// { length: 56, iterations: 20 }
+// { length: 57, iterations: 18 }
+// { length: 58, iterations: 18 }
+// { length: 59, iterations: 58 }
+// { length: 60, iterations: 58 }
+// { length: 61, iterations: 60 }
+// { length: 62, iterations: 60 }
+// { length: 63, iterations: 6 }
+// { length: 64, iterations: 6 }
+// { length: 65, iterations: 12 }
+// { length: 66, iterations: 12 }
+// { length: 67, iterations: 66 }
+// { length: 68, iterations: 66 }
+// { length: 69, iterations: 22 }
+// { length: 70, iterations: 22 }
+// { length: 71, iterations: 35 }
+// { length: 72, iterations: 35 }
 
 /**
  * Returns the nearest largest integer consisting of the digits of the given positive integer.
